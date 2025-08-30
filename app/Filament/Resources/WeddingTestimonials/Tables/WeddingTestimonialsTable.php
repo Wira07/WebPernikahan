@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Tables;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -17,6 +18,13 @@ class WeddingTestimonialsTable
         return $table
             ->columns([
                 //
+                Tables\Columns\ImageColumn::make('photo')
+                    ->circular(),
+
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+
+                Tables\Columns\ImageColumn::make('weddingPackage.thumbnail'),
             ])
             ->filters([
                 TrashedFilter::make(),
